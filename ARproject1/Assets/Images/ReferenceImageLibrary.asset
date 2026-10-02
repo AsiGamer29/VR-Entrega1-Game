@@ -18,22 +18,12 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5502366992288236658
-      m_GuidHigh: 11574269733603921308
+      m_GuidLow: 5075967547231311518
+      m_GuidHigh: 5595808405545888700
     m_SerializedTextureGuid:
-      m_GuidLow: 12958188826358295458
-      m_GuidHigh: 4487305014096559272
+      m_GuidLow: 11467346399607354146
+      m_GuidHigh: 8050390739990583817
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: fire
-    m_Texture: {fileID: 2800000, guid: 0785aba2bc15b3d4a8fc0db4221c463e, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5489348458667490753
-      m_GuidHigh: 3179984439679382913
-    m_SerializedTextureGuid:
-      m_GuidLow: 7364544547020488638
-      m_GuidHigh: 3555506823302656042
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
-    m_Name: water
-    m_Texture: {fileID: 2800000, guid: 19b23fbe1e3f66342ab06e2f9eb25731, type: 3}
+    m_Name: wario
+    m_Texture: {fileID: 2800000, guid: 38f3732232cb9f24099a3ba8b9bbb86f, type: 3}
