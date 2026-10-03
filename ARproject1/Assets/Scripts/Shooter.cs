@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Shooter : MonoBehaviour
 {
@@ -13,8 +14,15 @@ public class Shooter : MonoBehaviour
 
     float m_NextShotTime;
 
+    //score
+    public int score;
+    public TMP_Text scoreText;
+
     void Awake()
     {
+        score = 0;
+        scoreText.text = "Score = 0";
+
         if (arCamera == null)
             arCamera = Camera.main;
 
