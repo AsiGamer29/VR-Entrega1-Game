@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5209071532948849481}
   - component: {fileID: 7333237911862678609}
   - component: {fileID: 5750271827690676193}
+  - component: {fileID: 4941235311717587713}
   m_Layer: 0
   m_Name: Bala
   m_TagString: Untagged
@@ -68,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 45e97a9c296b6694f99a97f79611eebe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,3 +141,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4941235311717587713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416108300880114968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d04e32c208824f48a529fde06e084f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  lifetime: 5
+  destroyOnHit: 1
