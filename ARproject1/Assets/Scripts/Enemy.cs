@@ -2,24 +2,41 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     Shooter player;
     public int scoreGiven = 10;
+
+    public enum Types { Fire, Water, Plant };
+    public Types type;
+    string Weakness = "null";
+
     void Start()
     {
         player = FindAnyObjectByType<Shooter>();
+        switch (type)
+        {
+            case Types.Fire: 
+                Weakness = "BulletWater";
+                break;
+            case Types.Water:
+                Weakness = "BulletPlant";
+                break;
+            case Types.Plant:
+                Weakness = "BulletFire";
+                break;
+            default:
+                break;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //hola soy el update
     }
 
     //Destroy when bullet
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == Weakness)
         {
             Debug.Log($"Enemy Destroyed");
 

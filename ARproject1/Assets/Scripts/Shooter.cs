@@ -13,6 +13,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] bool ignoreUI = true;            // Don't shoot when the pointer is over a UI element
 
     float m_NextShotTime;
+    string bulletTag = "Bullet";
 
     //score
     public int score;
@@ -35,6 +36,15 @@ public class Shooter : MonoBehaviour
 
     void Update()
     {
+
+        //temp debug bullet types
+        var keyboard = Keyboard.current;
+        if (keyboard != null)
+        {
+            if (keyboard.digit1Key.wasPressedThisFrame) { bulletTag = "BulletWater"; Debug.Log(bulletTag); }
+            if (keyboard.digit2Key.wasPressedThisFrame) { bulletTag = "BulletPlant"; Debug.Log(bulletTag); }
+            if (keyboard.digit3Key.wasPressedThisFrame) { bulletTag = "BulletFire"; Debug.Log(bulletTag); }
+        }
 
         var pointer = Pointer.current; // Covers all screen touches
         if (pointer == null || !pointer.press.wasPressedThisFrame) return;
@@ -67,5 +77,6 @@ public class Shooter : MonoBehaviour
         // avoids the projectile to go through colliders when moving fast 
         projectile.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         projectile.linearVelocity = ray.direction * projectileSpeed;
+        projectile.gameObject.tag = bulletTag;
     }
 }
