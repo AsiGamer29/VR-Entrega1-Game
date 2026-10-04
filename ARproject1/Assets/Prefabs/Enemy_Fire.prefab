@@ -119,3 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   scoreGiven: 50
   type: 0
+  fireRadius: 0.15
+  fireSpeed: 2
+  waterAmplitude: 0.2
+  waterSpeed: 1.5
+  plantAmplitude: 0.3
+  plantSpeed: 1.5
+  plantForwardSpeed: 0.2
+  plantTravelDistance: 1

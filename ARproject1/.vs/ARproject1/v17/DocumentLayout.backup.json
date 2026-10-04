@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\",
+  "WorkspaceRootPath": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|f:\\nueva carpeta\\vr-entrega1-game\\arproject1\\assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|c:\\users\\asier\\onedrive\\documents\\github\\vr-entrega1-game\\arproject1\\assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,23 +22,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy.cs",
+              "ToolTip": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Enemy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAmwE0AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T11:27:00.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MeshEditor2DURP.cs",
-              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
+              "DocumentMoniker": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
-              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
+              "ToolTip": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
               "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -42,21 +51,16 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "TrackedImage.cs",
-              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\TrackedImage.cs",
+              "DocumentMoniker": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\TrackedImage.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TrackedImage.cs",
-              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\TrackedImage.cs",
+              "ToolTip": "F:\\Nueva carpeta\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\TrackedImage.cs",
               "RelativeToolTip": "Assets\\Scripts\\TrackedImage.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwEkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-02T08:41:12.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-02T08:41:12.298Z"
             }
           ]
         }
