@@ -58,12 +58,17 @@ public class Enemy : MonoBehaviour
 
     Animator anim;
     BoxCollider bc;
-    
+
+    //audio
+    AudioSource audioSource;
+    public AudioClip dieSFX;
+    public AudioClip mistakeSFX;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         bc = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();
 
         player = FindAnyObjectByType<Shooter>();
 
@@ -177,6 +182,7 @@ public class Enemy : MonoBehaviour
         isDead = true;
         anim.SetBool("isDead", true);
         bc.enabled = false;
+        audioSource.PlayOneShot(dieSFX);
 
         yield return new WaitForSeconds(deadTimer);
         gameObject.SetActive(false);
@@ -188,12 +194,19 @@ public class Enemy : MonoBehaviour
         if (isDead) return;
         if (collision.gameObject.tag == Weakness)
         {
+            //correct bullet
             Debug.Log("Enemy Destroyed");
 
             player.score += scoreGiven;
             player.scoreText.text = $"Score = {player.score}";
 
             StartCoroutine(Die());
+        }
+        else if (collision.gameObject.tag == "BulletWater" || collision.gameObject.tag == "BulletPlant"
+            || collision.gameObject.tag == "BulletFire" || collision.gameObject.tag == "Bullet")
+        {
+            //no correct bullet
+            audioSource.PlayOneShot(mistakeSFX);
         }
     }
 }
