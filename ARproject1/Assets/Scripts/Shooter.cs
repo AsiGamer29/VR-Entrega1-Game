@@ -37,6 +37,8 @@ public class Shooter : MonoBehaviour
     void Update()
     {
 
+        if (MenuManager.InputBlocked) return;
+
         //temp debug bullet types
         var keyboard = Keyboard.current;
         if (keyboard != null)
