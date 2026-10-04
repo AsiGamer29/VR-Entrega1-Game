@@ -1,73 +1,65 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-/// <summary>
-/// Spawns a prefab on every detected image and hides it when the image
-/// is not actively tracked. AR Foundation 6 API (trackablesChanged).
-/// </summary>
 public class TrackedImages : MonoBehaviour
 {
-    [SerializeField] ARTrackedImageManager m_TrackedImageManager;
-    [SerializeField] GameObject prefabToSpawn;
+    [SerializeField]
+    private ARTrackedImageManager m_TrackedImageManager;
 
-    void Awake()
-    {
-        // Fallback if the reference was not assigned in the Inspector
-        if (m_TrackedImageManager == null)
-            m_TrackedImageManager = FindAnyObjectByType<ARTrackedImageManager>();
-
-        if (m_TrackedImageManager == null)
-        {
-            Debug.LogError("TrackedImages: no ARTrackedImageManager found in the scene.");
-            enabled = false;
-        }
-    }
+    private readonly Dictionary<TrackableId, TrackingState> m_PreviousStates = new();
 
     void OnEnable()
     {
-        if (m_TrackedImageManager != null)
-            m_TrackedImageManager.trackablesChanged.AddListener(OnChanged);
+        m_TrackedImageManager.trackablesChanged.AddListener(OnChanged);
     }
 
     void OnDisable()
     {
-        if (m_TrackedImageManager != null)
-            m_TrackedImageManager.trackablesChanged.RemoveListener(OnChanged);
+        m_TrackedImageManager.trackablesChanged.RemoveListener(OnChanged);
     }
 
     void OnChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
     {
-        foreach (var newImage in eventArgs.added)
+        // Cuando se ve por primera vez
+        foreach (var image in eventArgs.added)
         {
-            Debug.Log($"Image added: {GetImageName(newImage)}");
+            Debug.Log(
+                $"[ADDED] {image.referenceImage.name} | " +
+                $"State: {image.trackingState} | " +
+                $"Position: {image.transform.position}"
+            );
 
-            if (prefabToSpawn == null) continue;
-            var content = Instantiate(prefabToSpawn, newImage.transform); // child: follows the image
-            content.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            m_PreviousStates[image.trackableId] = image.trackingState;
         }
 
-        foreach (var updatedImage in eventArgs.updated)
+        // Si algo cambia
+        foreach (var image in eventArgs.updated)
         {
-            // Hide content when the image is not actively tracked (Limited / None)
-            bool visible = updatedImage.trackingState == TrackingState.Tracking;
-            foreach (Transform child in updatedImage.transform)
-                child.gameObject.SetActive(visible);
+            if (!m_PreviousStates.TryGetValue(image.trackableId, out var previousState))
+            {
+                m_PreviousStates[image.trackableId] = image.trackingState;
+                continue;
+            }
+
+            if (previousState != image.trackingState)
+            {
+                Debug.Log(
+                    $"[STATE CHANGED] {image.referenceImage.name}: " +
+                    $"{previousState} -> {image.trackingState}"
+                );
+
+                m_PreviousStates[image.trackableId] = image.trackingState;
+            }
         }
 
-        foreach (var pair in eventArgs.removed)
+        // Esto deberia salir cuando se borra la imagen
+        foreach (var removed in eventArgs.removed)
         {
-            Debug.Log($"Image removed: {GetImageName(pair.Value)}");
-            // Children are destroyed along with the ARTrackedImage GameObject
-        }
-    }
+            Debug.Log($"[REMOVED] {removed.Key}");
 
-    // referenceImage.name is empty when the detected image does not match any
-    // entry in the Reference Image Library (e.g. a Simulated Tracked Image with no texture)
-    static string GetImageName(ARTrackedImage image)
-    {
-        return string.IsNullOrEmpty(image.referenceImage.name)
-            ? $"<unnamed, id {image.trackableId}>"
-            : image.referenceImage.name;
+            m_PreviousStates.Remove(removed.Key);
+        }
     }
 }
