@@ -1085,7 +1085,7 @@ MonoBehaviour:
       m_Calls: []
   m_SerializedLibrary: {fileID: 11400000, guid: 879c3c30e0f58a247b46acfe6171a231, type: 2}
   m_MaxNumberOfMovingImages: 4
-  m_TrackedImagePrefab: {fileID: 8987381218367672234, guid: 7f1c37df4cbb0724ab2a918023795d27, type: 3}
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &2512387470422636675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1098,6 +1098,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e52da79955381a4e8fcff3317409817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackedImages
+  m_Effects:
+  - imageName: Image_Fire
+    effectPrefab: {fileID: 6794737594220296705, guid: 26f7e663845fc5e4392d3437f5469c35, type: 3}
+  - imageName: Image_Water
+    effectPrefab: {fileID: 6794737594220296705, guid: 28b4cccb6b06ee14f98a69c1e702427d, type: 3}
+  - imageName: Image_Plant
+    effectPrefab: {fileID: 6794737594220296705, guid: 9f863ac85bca87f4bb0a7cd537817df5, type: 3}
   m_TrackedImageManager: {fileID: 2512387470422636674}
 --- !u!4 &2512387470860572925
 Transform:

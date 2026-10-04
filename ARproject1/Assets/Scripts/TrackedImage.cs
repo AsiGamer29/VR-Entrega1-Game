@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -5,61 +6,86 @@ using UnityEngine.XR.ARSubsystems;
 
 public class TrackedImages : MonoBehaviour
 {
-    [SerializeField]
-    private ARTrackedImageManager m_TrackedImageManager;
-
-    private readonly Dictionary<TrackableId, TrackingState> m_PreviousStates = new();
-
-    void OnEnable()
+    [Serializable]
+    public struct ImageEffect
     {
-        m_TrackedImageManager.trackablesChanged.AddListener(OnChanged);
+        public string imageName;
+        public GameObject effectPrefab;
+    }
+    [SerializeField] private ImageEffect[] m_Effects;
+    [SerializeField] private ARTrackedImageManager m_TrackedImageManager;
+    
+
+    private readonly Dictionary<string, GameObject> m_PrefabsByName = new();
+    private readonly Dictionary<TrackableId, GameObject> m_Instances = new();
+
+    void Awake()
+    {
+        foreach (var e in m_Effects)
+            m_PrefabsByName[e.imageName] = e.effectPrefab;
     }
 
-    void OnDisable()
-    {
-        m_TrackedImageManager.trackablesChanged.RemoveListener(OnChanged);
-    }
+    void OnEnable() => m_TrackedImageManager.trackablesChanged.AddListener(OnChanged);
+    void OnDisable() => m_TrackedImageManager.trackablesChanged.RemoveListener(OnChanged);
 
-    void OnChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
+    void OnChanged(ARTrackablesChangedEventArgs<ARTrackedImage> args)
     {
-        // Cuando se ve por primera vez
-        foreach (var image in eventArgs.added)
+        foreach (var image in args.added)
         {
-            Debug.Log(
-                $"[ADDED] {image.referenceImage.name} | " +
-                $"State: {image.trackingState} | " +
-                $"Position: {image.transform.position}"
-            );
-
-            m_PreviousStates[image.trackableId] = image.trackingState;
+            Debug.Log($"[ADDED] {image.referenceImage.name} | {image.trackingState}");
+            CreateEffect(image);
+            UpdateEffect(image);
         }
 
-        // Si algo cambia
-        foreach (var image in eventArgs.updated)
-        {
-            if (!m_PreviousStates.TryGetValue(image.trackableId, out var previousState))
-            {
-                m_PreviousStates[image.trackableId] = image.trackingState;
-                continue;
-            }
+        foreach (var image in args.updated)
+            UpdateEffect(image);
 
-            if (previousState != image.trackingState)
-            {
-                Debug.Log(
-                    $"[STATE CHANGED] {image.referenceImage.name}: " +
-                    $"{previousState} -> {image.trackingState}"
-                );
-
-                m_PreviousStates[image.trackableId] = image.trackingState;
-            }
-        }
-
-        // Esto deberia salir cuando se borra la imagen
-        foreach (var removed in eventArgs.removed)
+        foreach (var removed in args.removed)
         {
             Debug.Log($"[REMOVED] {removed.Key}");
+            if (m_Instances.TryGetValue(removed.Key, out var go) && go != null)
+                Destroy(go);
+            m_Instances.Remove(removed.Key);
+        }
+    }
 
-            m_PreviousStates.Remove(removed.Key);
+    void CreateEffect(ARTrackedImage image)
+    {
+        if (!m_PrefabsByName.TryGetValue(image.referenceImage.name, out var prefab) || prefab == null)
+        {
+            Debug.LogWarning($"ERROR - Prefab not assigned for image: '{image.referenceImage.name}'");
+            return;
+        }
+
+        // We instantiate the effect on the corresponding image
+        var instance = Instantiate(prefab, image.transform);
+        instance.transform.localPosition = Vector3.zero;
+        instance.transform.localRotation = Quaternion.identity;
+        instance.SetActive(false);
+        m_Instances[image.trackableId] = instance;
+    }
+
+    void UpdateEffect(ARTrackedImage image)
+    {
+        if (!m_Instances.TryGetValue(image.trackableId, out var instance) || instance == null)
+            return;
+
+        bool isTracking = image.trackingState == TrackingState.Tracking;
+
+        if (isTracking && !instance.activeSelf)
+        {
+            // Here we trigger the effect another time if the image is detected again
+            instance.SetActive(true);
+            foreach (var ps in instance.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Clear(true);
+                ps.Play(true);
+            }
+        }
+        else if (!isTracking && instance.activeSelf)
+        {
+            // Delete if the image is not being tracked
+            instance.SetActive(false);
         }
     }
 }

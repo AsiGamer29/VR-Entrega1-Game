@@ -6,6 +6,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] float lifetime = 5f;
     [SerializeField] bool destroyOnHit = false;
 
+
+
+
     void Start()
     {
         //if the game objet is not destroyed on hit, destroy it after lifetime
