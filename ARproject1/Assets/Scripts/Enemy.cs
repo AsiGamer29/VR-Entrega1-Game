@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,8 +10,17 @@ public class Enemy : MonoBehaviour
     public Types type;
     string Weakness = "null";
 
+    bool isDead = false;
+    float deadTimer = 1f;
+
+    Animator anim;
+    BoxCollider bc;
+    
     void Start()
     {
+        anim = GetComponent<Animator>();
+        bc = GetComponent<BoxCollider>();
+
         player = FindAnyObjectByType<Shooter>();
         switch (type)
         {
@@ -33,16 +43,28 @@ public class Enemy : MonoBehaviour
         //hola soy el update
     }
 
+    IEnumerator Die()
+    {
+        isDead = true;
+        anim.SetBool("isDead", true);
+        bc.enabled = false;
+
+        yield return new WaitForSeconds(deadTimer);
+        gameObject.SetActive(false);
+    }
+
     //Destroy when bullet
     void OnCollisionEnter(Collision collision)
     {
+        if (isDead) return;
         if (collision.gameObject.tag == Weakness)
         {
             Debug.Log($"Enemy Destroyed");
 
             player.score += scoreGiven;
             player.scoreText.text = $"Score = {player.score}";
-            gameObject.SetActive(false);
+
+            StartCoroutine(Die());
         }
     }
 }

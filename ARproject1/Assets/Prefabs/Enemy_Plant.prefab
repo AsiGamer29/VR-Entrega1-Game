@@ -91,6 +91,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c63605a6d66ebc41bd5f8842e1042c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7852955035173277859}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c63605a6d66ebc41bd5f8842e1042c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6602397580749497685}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c63605a6d66ebc41bd5f8842e1042c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6148071961506321702}
   m_SourcePrefab: {fileID: 100100000, guid: 7c63605a6d66ebc41bd5f8842e1042c1, type: 3}
 --- !u!1 &6949573304256952981 stripped
 GameObject:
@@ -111,3 +117,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   scoreGiven: 50
   type: 2
+--- !u!95 &6602397580749497685
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949573304256952981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e41c575c72d51f4439b722082e3e6e74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &6148071961506321702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949573304256952981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.69, z: 1}
+  m_Center: {x: 0, y: 0.43, z: 0}
