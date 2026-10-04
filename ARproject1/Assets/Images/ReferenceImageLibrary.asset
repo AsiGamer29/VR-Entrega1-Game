@@ -18,12 +18,32 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5075967547231311518
-      m_GuidHigh: 5595808405545888700
+      m_GuidLow: 5332220837876809995
+      m_GuidHigh: 13475881500462370984
     m_SerializedTextureGuid:
-      m_GuidLow: 11467346399607354146
-      m_GuidHigh: 8050390739990583817
+      m_GuidLow: 379607197767841432
+      m_GuidHigh: 9538809722498980089
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: wario
-    m_Texture: {fileID: 2800000, guid: 38f3732232cb9f24099a3ba8b9bbb86f, type: 3}
+    m_Name: Image_Fire
+    m_Texture: {fileID: 2800000, guid: 31223698a2bc0544f9189861e7a86084, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5278843979937028367
+      m_GuidHigh: 8003846756352378028
+    m_SerializedTextureGuid:
+      m_GuidLow: 13102102068746223111
+      m_GuidHigh: 14572912390320254889
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Image_Plant
+    m_Texture: {fileID: 2800000, guid: e2877e070469b5d4a96fedbf9b623dca, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5469145498502016411
+      m_GuidHigh: 7604128659725447355
+    m_SerializedTextureGuid:
+      m_GuidLow: 8949785653620207768
+      m_GuidHigh: 15367178244657084136
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Image_Water
+    m_Texture: {fileID: 2800000, guid: 4beb709806a27c34e876e5d8312f43d5, type: 3}
