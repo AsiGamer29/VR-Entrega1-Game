@@ -1,4 +1,8 @@
+
 using System.Collections.Generic;
+
+using System.Collections;
+
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,27 +14,28 @@ public class Enemy : MonoBehaviour
     public Types type;
     string Weakness = "null";
 
+
     [Header("Objetivo")]
-    [Tooltip("Si es null usa la cámara principal (en AR, la del XR Origin)")]
+    [Tooltip("Si es null usa la cï¿½mara principal (en AR, la del XR Origin)")]
     public Transform target;
 
     [Header("Acercamiento")]
     public float approachSpeed = 0.04f;   // velocidad de enemigos
     public float stopDistance = 1.2f;     // deteccion de colision con el player
 
-    [Header("Separación entre enemigos")]
-    public float separationRadius = 1f;   // distancia mínima deseada entre enemigos
-    public float separationStrength = 2f;   // cuánto se empujan al solaparse
+    [Header("Separaciï¿½n entre enemigos")]
+    public float separationRadius = 1f;   // distancia mï¿½nima deseada entre enemigos
+    public float separationStrength = 2f;   // cuï¿½nto se empujan al solaparse
 
     [Header("Mirar al jugador")]
     public bool lookAtPlayer = true;
-    [Tooltip("Si está activo, solo gira en horizontal (no se inclina arriba/abajo)")]
+    [Tooltip("Si estï¿½ activo, solo gira en horizontal (no se inclina arriba/abajo)")]
     public bool lookOnlyHorizontal = false;
     [Tooltip("Corrige el modelo si su 'frente' no es el eje Z")]
     public Vector3 modelRotationOffset = new Vector3(0f, 180f, 0f);
     public float turnSpeed = 10f;
 
-    [Header("Fuego - Círculos")]
+    [Header("Fuego - Cï¿½rculos")]
     public float fireRadius = 0.1f;
     public float fireSpeed = 1f;
 
@@ -48,9 +53,18 @@ public class Enemy : MonoBehaviour
 
     Vector3 basePos;
     float timeOffset;
+    bool isDead = false;
+    float deadTimer = 1f;
+
+    Animator anim;
+    BoxCollider bc;
+    
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+        bc = GetComponent<BoxCollider>();
+
         player = FindAnyObjectByType<Shooter>();
 
         switch (type)
@@ -158,15 +172,28 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator Die()
+    {
+        isDead = true;
+        anim.SetBool("isDead", true);
+        bc.enabled = false;
+
+        yield return new WaitForSeconds(deadTimer);
+        gameObject.SetActive(false);
+    }
+
+    //Destroy when bullet
     void OnCollisionEnter(Collision collision)
     {
+        if (isDead) return;
         if (collision.gameObject.tag == Weakness)
         {
             Debug.Log("Enemy Destroyed");
 
             player.score += scoreGiven;
             player.scoreText.text = $"Score = {player.score}";
-            gameObject.SetActive(false);
+
+            StartCoroutine(Die());
         }
     }
 }
