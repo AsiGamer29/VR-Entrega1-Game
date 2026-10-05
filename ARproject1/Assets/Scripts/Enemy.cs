@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     Vector3 basePos;
     float timeOffset;
     bool isDead = false;
-    float deadTimer = 1f;
+    float deadTimer = 0.8f;
 
     Animator anim;
     BoxCollider bc;
