@@ -64,6 +64,16 @@ public class Enemy : MonoBehaviour
     public AudioClip dieSFX;
     public AudioClip mistakeSFX;
 
+    //text
+    public GameObject scoreTextPrefab;
+    Transform hudParent;
+
+    private void Awake()
+    {
+        var hud = GameObject.Find("HUD");
+        if (hud != null) hudParent = hud.transform;
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -199,6 +209,11 @@ public class Enemy : MonoBehaviour
 
             player.score += scoreGiven;
             player.scoreText.text = $"Score = {player.score}";
+
+            if (scoreTextPrefab != null && hudParent != null)
+            {
+                Instantiate(scoreTextPrefab, hudParent, false);
+            }
 
             StartCoroutine(Die());
         }

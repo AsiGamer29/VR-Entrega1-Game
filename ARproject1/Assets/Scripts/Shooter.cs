@@ -71,7 +71,7 @@ public class Shooter : MonoBehaviour
     {
         if (MenuManager.InputBlocked)
         {
-            Debug.Log("Bloqueado por MenuManager.InputBlocked");
+            //Debug.Log("Bloqueado por MenuManager.InputBlocked");
             return;
         }
 

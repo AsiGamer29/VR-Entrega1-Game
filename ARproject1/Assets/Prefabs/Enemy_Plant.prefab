@@ -137,6 +137,7 @@ MonoBehaviour:
   plantSpeed: 0.8
   dieSFX: {fileID: 8300000, guid: ebaa75a2532e30a43bd54d50e98d04e0, type: 3}
   mistakeSFX: {fileID: 8300000, guid: 0e7f3048664d3704090c5f103d457c81, type: 3}
+  scoreTextPrefab: {fileID: 2971679123867646107, guid: 819902d00f49766449771a5d634d7ab9, type: 3}
 --- !u!95 &6602397580749497685
 Animator:
   serializedVersion: 7
