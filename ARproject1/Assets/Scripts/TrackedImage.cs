@@ -9,12 +9,14 @@ public class TrackedImages : MonoBehaviour
     [Serializable]
     public struct ImageEffect
     {
+        [Tooltip("Nombre")]
         public string imageName;
         public GameObject effectPrefab;
     }
-    [SerializeField] private ImageEffect[] m_Effects;
+
     [SerializeField] private ARTrackedImageManager m_TrackedImageManager;
-    
+    [SerializeField] private Shooter m_Shooter;
+    [SerializeField] private ImageEffect[] m_Effects;
 
     private readonly Dictionary<string, GameObject> m_PrefabsByName = new();
     private readonly Dictionary<TrackableId, GameObject> m_Instances = new();
@@ -53,11 +55,11 @@ public class TrackedImages : MonoBehaviour
     {
         if (!m_PrefabsByName.TryGetValue(image.referenceImage.name, out var prefab) || prefab == null)
         {
-            Debug.LogWarning($"ERROR - Prefab not assigned for image: '{image.referenceImage.name}'");
+            Debug.LogWarning($"No hay prefab para la imagen '{image.referenceImage.name}'");
             return;
         }
 
-        // We instantiate the effect on the corresponding image
+        // Instanciamos el prefab que toque, en este caso es la particula
         var instance = Instantiate(prefab, image.transform);
         instance.transform.localPosition = Vector3.zero;
         instance.transform.localRotation = Quaternion.identity;
@@ -74,17 +76,18 @@ public class TrackedImages : MonoBehaviour
 
         if (isTracking && !instance.activeSelf)
         {
-            // Here we trigger the effect another time if the image is detected again
             instance.SetActive(true);
             foreach (var ps in instance.GetComponentsInChildren<ParticleSystem>())
             {
                 ps.Clear(true);
                 ps.Play(true);
             }
+
+            if (m_Shooter != null)
+                m_Shooter.SetProjectileType(image.referenceImage.name);
         }
         else if (!isTracking && instance.activeSelf)
         {
-            // Delete if the image is not being tracked
             instance.SetActive(false);
         }
     }

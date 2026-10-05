@@ -3,19 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|c:\\users\\asier\\onedrive\\documents\\github\\vr-entrega1-game\\arproject1\\assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|c:\\users\\asier\\onedrive\\documents\\github\\vr-entrega1-game\\arproject1\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|c:\\users\\asier\\onedrive\\documents\\github\\vr-entrega1-game\\arproject1\\assets\\scripts\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|c:\\users\\asier\\onedrive\\documents\\github\\vr-entrega1-game\\arproject1\\assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\trackedimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|c:\\users\\asier\\onedrive\\documents\\github\\vr-entrega1-game\\arproject1\\assets\\scripts\\enemyspawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\assets\\scripts\\enemyspawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DEAE437-1FA9-8CAD-860A-974A53EBD868}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyspawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,27 +51,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Shooter.cs",
-              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Shooter.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Shooter.cs",
-              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Shooter.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Shooter.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Title": "MenuManager.cs",
+              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\MenuManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MenuManager.cs",
+              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\MenuManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MenuManager.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAkwGIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-04T13:34:45.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Projectile.cs",
-              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Projectile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
-              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Projectile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Projectile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-04T13:31:42.874Z",
+              "WhenOpened": "2026-10-05T09:42:05.436Z",
               "EditorCaption": ""
             },
             {
@@ -76,7 +67,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Shooter.cs",
+              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Shooter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Shooter.cs",
+              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Shooter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Shooter.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAawHoAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T13:34:45.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
+              "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T13:31:42.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "EnemySpawn.cs",
               "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\EnemySpawn.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemySpawn.cs",
@@ -84,12 +100,11 @@
               "RelativeToolTip": "Assets\\Scripts\\EnemySpawn.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAUwJgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-04T11:34:14.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-04T11:34:14.293Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy.cs",
@@ -101,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MeshEditor2DURP.cs",
               "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@5e27d3932650\\Editor\\2D\\Overrides\\MeshEditor2DURP.cs",
@@ -113,13 +128,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "TrackedImage.cs",
               "DocumentMoniker": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\TrackedImage.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TrackedImage.cs",
               "ToolTip": "C:\\Users\\asier\\OneDrive\\Documents\\GitHub\\VR-Entrega1-Game\\ARproject1\\Assets\\Scripts\\TrackedImage.cs",
               "RelativeToolTip": "Assets\\Scripts\\TrackedImage.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwFYAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-02T08:41:12.298Z",
               "EditorCaption": ""
