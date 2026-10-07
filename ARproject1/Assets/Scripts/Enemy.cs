@@ -1,8 +1,5 @@
-
 using System.Collections.Generic;
-
 using System.Collections;
-
 using UnityEngine;
 using TMPro;
 
@@ -16,28 +13,25 @@ public class Enemy : MonoBehaviour
     public Types type;
     string Weakness = "null";
 
-
     [Header("Objetivo")]
-    [Tooltip("Si es null usa la c�mara principal (en AR, la del XR Origin)")]
+    [Tooltip("Si es null usa la camara principal (en AR, la del XR Origin)")]
     public Transform target;
 
     [Header("Acercamiento")]
-    public float approachSpeed = 0.04f;   // velocidad de enemigos
+    public float approachSpeed = 0.1f;   // velocidad de enemigos
     public float stopDistance = 1.2f;     // deteccion de colision con el player
 
-    [Header("Separaci�n entre enemigos")]
-    public float separationRadius = 1f;   // distancia m�nima deseada entre enemigos
-    public float separationStrength = 2f;   // cu�nto se empujan al solaparse
+    [Header("Separacion entre enemigos")]
+    public float separationRadius = 1f;
+    public float separationStrength = 2f;
 
     [Header("Mirar al jugador")]
     public bool lookAtPlayer = true;
-    [Tooltip("Si est� activo, solo gira en horizontal (no se inclina arriba/abajo)")]
     public bool lookOnlyHorizontal = false;
-    [Tooltip("Corrige el modelo si su 'frente' no es el eje Z")]
     public Vector3 modelRotationOffset = new Vector3(0f, 180f, 0f);
     public float turnSpeed = 10f;
 
-    [Header("Fuego - C�rculos")]
+    [Header("Fuego - Circulos")]
     public float fireRadius = 0.1f;
     public float fireSpeed = 1f;
 
@@ -46,10 +40,13 @@ public class Enemy : MonoBehaviour
     public float waterSpeed = 0.8f;
 
     [Header("Planta - Movimiento en S")]
-    public float plantAmplitude = 0.15f;   
-    public float plantSpeed = 0.8f;        
+    public float plantAmplitude = 0.15f;
+    public float plantSpeed = 0.8f;
 
     public bool HasReachedPlayer { get; private set; }
+
+    // Lo escucha el spawner para contar muertes (victoria)
+    public static event System.Action<Enemy> OnKilled;
 
     static readonly List<Enemy> allEnemies = new List<Enemy>();
 
@@ -82,6 +79,18 @@ public class Enemy : MonoBehaviour
         bc = GetComponent<BoxCollider>();
         audioSource = GetComponent<AudioSource>();
 
+        // El Animator no debe mover el objeto: la posicion la controla este script
+        if (anim != null) anim.applyRootMotion = false;
+
+        // Si el prefab tiene Rigidbody, que nada lo empuje (planos AR, otras colisiones).
+        // Las balas lo siguen detectando igualmente.
+        var rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
         player = FindAnyObjectByType<Shooter>();
 
         switch (type)
@@ -106,7 +115,7 @@ public class Enemy : MonoBehaviour
     {
         allEnemies.Add(this);
         basePos = transform.position;
-        timeOffset = Random.Range(0f, 10f); // enemigos en pantalla
+        timeOffset = Random.Range(0f, 10f);
         HasReachedPlayer = false;
     }
 
@@ -115,9 +124,11 @@ public class Enemy : MonoBehaviour
         allEnemies.Remove(this);
     }
 
-    void Update()
+    // LateUpdate: se ejecuta despues del Animator, asi que nuestra posicion siempre gana
+    void LateUpdate()
     {
         if (target == null) return;
+        if (isDead) return; // muerto: no se mueve mientras dura la animacion
 
         Vector3 toTarget = target.position - basePos;
         float dist = toTarget.magnitude;
@@ -130,10 +141,8 @@ public class Enemy : MonoBehaviour
         {
             HasReachedPlayer = true;
             Debug.Log("Enemy reached player");
-            
         }
 
-        
         for (int i = 0; i < allEnemies.Count; i++)
         {
             Enemy other = allEnemies[i];
@@ -148,10 +157,9 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        
         Vector3 forward = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : transform.forward;
         Vector3 right = Vector3.Cross(Vector3.up, forward);
-        if (right.sqrMagnitude < 0.0001f) right = Vector3.right; 
+        if (right.sqrMagnitude < 0.0001f) right = Vector3.right;
         right.Normalize();
         Vector3 up = Vector3.Cross(forward, right).normalized;
 
@@ -192,21 +200,19 @@ public class Enemy : MonoBehaviour
     IEnumerator Die()
     {
         isDead = true;
-        anim.SetBool("isDead", true);
-        bc.enabled = false;
-        audioSource.PlayOneShot(dieSFX);
+        if (anim != null) anim.SetBool("isDead", true);
+        if (bc != null) bc.enabled = false;
+        if (audioSource != null && dieSFX != null) audioSource.PlayOneShot(dieSFX);
 
         yield return new WaitForSeconds(deadTimer);
         gameObject.SetActive(false);
     }
 
-    //Destroy when bullet
     void OnCollisionEnter(Collision collision)
     {
         if (isDead) return;
         if (collision.gameObject.tag == Weakness)
         {
-            //correct bullet
             Debug.Log("Enemy Destroyed");
 
             player.score += scoreGiven;
@@ -219,13 +225,13 @@ public class Enemy : MonoBehaviour
                 scoreText.color = scoreColor;
             }
 
+            OnKilled?.Invoke(this);   //+1 al morir pa contar los que llevas
             StartCoroutine(Die());
         }
         else if (collision.gameObject.tag == "BulletWater" || collision.gameObject.tag == "BulletPlant"
             || collision.gameObject.tag == "BulletFire" || collision.gameObject.tag == "Bullet")
         {
-            //no correct bullet
-            audioSource.PlayOneShot(mistakeSFX);
+            if (audioSource != null && mistakeSFX != null) audioSource.PlayOneShot(mistakeSFX);
         }
     }
 }

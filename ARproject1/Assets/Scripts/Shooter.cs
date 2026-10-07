@@ -37,23 +37,23 @@ public class Shooter : MonoBehaviour
             Debug.LogError("Camera not found");
             enabled = false;
         }
-        SetProjectileType("Image_Plant");
+        SetProjectileType("Image_Plant 2");
 
     }
 
     public void SetProjectileType(string imageName)
     {
-        if (imageName == "Image_Plant")
+        if (imageName == "Image_Plant 2")
         {
             currentBullet = plantBullet;
             bulletTag = "BulletPlant";
         }
-        else if (imageName == "Image_Fire")
+        else if (imageName == "Image_Fire 2")
         {
             currentBullet = fireBullet;
             bulletTag = "BulletFire";
         }
-        else if (imageName == "Image_Water")
+        else if (imageName == "Image_Water 2")
         {
             currentBullet = waterBullet;
             bulletTag = "BulletWater";
@@ -79,9 +79,9 @@ public class Shooter : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard != null)
         {
-            if (keyboard.digit1Key.wasPressedThisFrame) SetProjectileType("Image_Water");
-            if (keyboard.digit2Key.wasPressedThisFrame) SetProjectileType("Image_Plant");
-            if (keyboard.digit3Key.wasPressedThisFrame) SetProjectileType("Image_Fire");
+            if (keyboard.digit1Key.wasPressedThisFrame) SetProjectileType("Image_Water 2");
+            if (keyboard.digit2Key.wasPressedThisFrame) SetProjectileType("Image_Plant 2");
+            if (keyboard.digit3Key.wasPressedThisFrame) SetProjectileType("Image_Fire 2");
         }
 
         var pointer = Pointer.current;

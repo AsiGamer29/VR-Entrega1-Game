@@ -1636,19 +1636,32 @@ MonoBehaviour:
   waterPrefab: {fileID: 2780679723036884572, guid: f838945db00ba69468cd17957063302d, type: 3}
   plantPrefab: {fileID: 6949573304256952981, guid: 1c97e7e71fafe4c4aadc6495836c3470, type: 3}
   maxEnemies: 10
+  totalEnemiesToSpawn: 25
   spawnInterval: 2
   spawnIntervalRandomness: 0.5
-  center: {fileID: 2512387470422636640}
+  center: {fileID: 2512387468973847774}
   minDistance: 2
   maxDistance: 5
-  minHeight: -0.5
-  maxHeight: 1.5
-  spawnAngle: 360
+  viewportMargin: 0.15
   minSeparation: 0.6
   maxPlacementAttempts: 10
   fireWeight: 1
   waterWeight: 1
   plantWeight: 1
+  useARDepthCheck: 1
+  raycastManager: {fileID: 2512387470422636672}
+  surfaceMargin: 0.4
+  unknownSpaceMaxDistance: 2.5
+  rejectUnknownSpace: 0
+  useDepthRaycast: 1
+  usePlanes: 1
+  usePointCloud: 1
+  pointCloudManager: {fileID: 2512387470422636676}
+  pointRayRadius: 0.3
+  minPointsToBlock: 3
+  onVictory:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1393653038
 Transform:
   m_ObjectHideFlags: 0
@@ -2918,6 +2931,7 @@ GameObject:
   - component: {fileID: 2512387468973847772}
   - component: {fileID: 2512387468973847773}
   - component: {fileID: 2512387468973847776}
+  - component: {fileID: 2512387468973847777}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2969,6 +2983,23 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &2512387468973847777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512387468973847775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15f82cc229284894964d2d30806969d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.ARFoundation::UnityEngine.XR.ARFoundation.AROcclusionManager
+  m_HumanSegmentationStencilMode: 0
+  m_HumanSegmentationDepthMode: 0
+  m_EnvironmentDepthMode: 1
+  m_EnvironmentDepthTemporalSmoothing: 1
+  m_OcclusionPreferenceMode: 2
 --- !u!4 &2512387470422636640
 Transform:
   m_ObjectHideFlags: 0
@@ -3032,6 +3063,7 @@ GameObject:
   - component: {fileID: 2512387470422636672}
   - component: {fileID: 2512387470422636674}
   - component: {fileID: 2512387470422636675}
+  - component: {fileID: 2512387470422636676}
   m_Layer: 0
   m_Name: XR Origin (AR Rig)
   m_TagString: Untagged
@@ -3105,16 +3137,32 @@ MonoBehaviour:
   m_TrackedImageManager: {fileID: 2512387470422636674}
   m_Shooter: {fileID: 1477639667}
   m_Effects:
-  - imageName: Image_Plant
+  - imageName: Image_Plant 2
     effectPrefab: {fileID: 6794737594220296705, guid: 9f863ac85bca87f4bb0a7cd537817df5, type: 3}
     soundClip: {fileID: 8300000, guid: 9a8b4fa05f4d35e469d6cb5614f6b435, type: 3}
-  - imageName: Image_Fire
+  - imageName: Image_Fire 2
     effectPrefab: {fileID: 6794737594220296705, guid: 26f7e663845fc5e4392d3437f5469c35, type: 3}
     soundClip: {fileID: 8300000, guid: 97005cd099091cf4ea484b54ff2b47da, type: 3}
-  - imageName: Image_Water
+  - imageName: Image_Water 2
     effectPrefab: {fileID: 6794737594220296705, guid: 28b4cccb6b06ee14f98a69c1e702427d, type: 3}
     soundClip: {fileID: 8300000, guid: df847f1d833344e4da27dd5fdfd3c370, type: 3}
   m_SoundVolume: 1
+--- !u!114 &2512387470422636676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512387470422636669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.ARFoundation::UnityEngine.XR.ARFoundation.ARPointCloudManager
+  <trackablesChanged>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PointCloudPrefab: {fileID: 0}
 --- !u!4 &2512387470860572925
 Transform:
   m_ObjectHideFlags: 0

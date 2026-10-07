@@ -21,29 +21,29 @@ MonoBehaviour:
       m_GuidLow: 4922535620574636934
       m_GuidHigh: 12870429125312059562
     m_SerializedTextureGuid:
-      m_GuidLow: 18303898116974597409
-      m_GuidHigh: 11869378080214050875
+      m_GuidLow: 14196743393576528125
+      m_GuidHigh: 5970633302034743080
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: Image_Plant
-    m_Texture: {fileID: 2800000, guid: f3365521825bfe043b68f72f7a80b8a4, type: 3}
+    m_Name: Image_Plant 2
+    m_Texture: {fileID: 2800000, guid: 1d80a8fdf6e6c50428ffe5bb5af3db52, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4625529813120807706
       m_GuidHigh: 1599161120122740652
     m_SerializedTextureGuid:
-      m_GuidLow: 6522425265456852043
-      m_GuidHigh: 1626522513514138952
+      m_GuidLow: 5378492772773896294
+      m_GuidHigh: 6802803879158709609
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: Image_Fire
-    m_Texture: {fileID: 2800000, guid: bd96ac4b4f385a84488d2fbd9b919216, type: 3}
+    m_Name: Image_Fire 2
+    m_Texture: {fileID: 2800000, guid: 2c31a0663eae4aa4697de7d5156a685e, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5345087539118402093
       m_GuidHigh: 3863154042912499886
     m_SerializedTextureGuid:
-      m_GuidLow: 16088100599268419920
-      m_GuidHigh: 17665890784132922219
+      m_GuidLow: 11170306176167861196
+      m_GuidHigh: 5295583949117753675
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: Image_Water
-    m_Texture: {fileID: 2800000, guid: b224a9506a41df446bfb16fd11da29f5, type: 3}
+    m_Name: Image_Water 2
+    m_Texture: {fileID: 2800000, guid: ced65bcce6489b044b896c658bb17d49, type: 3}
