@@ -2938,10 +2938,14 @@ MonoBehaviour:
   m_Effects:
   - imageName: Image_Plant
     effectPrefab: {fileID: 6794737594220296705, guid: 9f863ac85bca87f4bb0a7cd537817df5, type: 3}
+    soundClip: {fileID: 8300000, guid: 9a8b4fa05f4d35e469d6cb5614f6b435, type: 3}
   - imageName: Image_Fire
     effectPrefab: {fileID: 6794737594220296705, guid: 26f7e663845fc5e4392d3437f5469c35, type: 3}
+    soundClip: {fileID: 8300000, guid: 97005cd099091cf4ea484b54ff2b47da, type: 3}
   - imageName: Image_Water
     effectPrefab: {fileID: 6794737594220296705, guid: 28b4cccb6b06ee14f98a69c1e702427d, type: 3}
+    soundClip: {fileID: 8300000, guid: df847f1d833344e4da27dd5fdfd3c370, type: 3}
+  m_SoundVolume: 1
 --- !u!4 &2512387470860572925
 Transform:
   m_ObjectHideFlags: 0
