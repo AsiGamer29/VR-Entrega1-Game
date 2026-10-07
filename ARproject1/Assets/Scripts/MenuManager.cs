@@ -30,6 +30,8 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public GameObject tutorialText;
+
     // return Android button
     void Update()
     {
@@ -65,6 +67,15 @@ public class MenuManager : MonoBehaviour
         {
             shooter.score = 0;
             shooter.scoreText.text = "Score = 0";
+        }
+
+        // Reset Animator
+        Animator animator = tutorialText.GetComponent<Animator>();
+
+        if (animator != null)
+        {
+            animator.Rebind();
+            animator.Update(0f);
         }
     }
 
