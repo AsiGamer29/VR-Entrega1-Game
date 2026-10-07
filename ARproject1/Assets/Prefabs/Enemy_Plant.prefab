@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   scoreGiven: 50
+  scoreColor: {r: 0.47579205, g: 0.9169811, b: 0.6146409, a: 1}
   type: 2
   target: {fileID: 0}
   approachSpeed: 0.04

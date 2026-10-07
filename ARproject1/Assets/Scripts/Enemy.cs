@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Collections;
 
 using UnityEngine;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
     Shooter player;
     public int scoreGiven = 10;
+    public Color scoreColor = Color.white;
 
     public enum Types { Fire, Water, Plant };
     public Types type;
@@ -212,7 +214,9 @@ public class Enemy : MonoBehaviour
 
             if (scoreTextPrefab != null && hudParent != null)
             {
-                Instantiate(scoreTextPrefab, hudParent, false);
+                GameObject textGO = Instantiate(scoreTextPrefab, hudParent, false);
+                TMP_Text scoreText = textGO.GetComponent<TMP_Text>();
+                scoreText.color = scoreColor;
             }
 
             StartCoroutine(Die());
