@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public GameObject tutorialText;
+    public GameObject pauseButton;
 
     // return Android button
     void Update()
@@ -98,6 +99,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.pause = true;
         pausePanel.SetActive(true);
+        pauseButton.SetActive(false);
     }
 
     public void Resume()
@@ -106,6 +108,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
         pausePanel.SetActive(false);
+        pauseButton.SetActive(true);
     }
 
     public void Restart()
