@@ -2022,8 +2022,8 @@ MonoBehaviour:
   firePrefab: {fileID: 8987381218367672234, guid: 7f1c37df4cbb0724ab2a918023795d27, type: 3}
   waterPrefab: {fileID: 2780679723036884572, guid: f838945db00ba69468cd17957063302d, type: 3}
   plantPrefab: {fileID: 6949573304256952981, guid: 1c97e7e71fafe4c4aadc6495836c3470, type: 3}
-  maxEnemies: 10
-  totalEnemiesToSpawn: 25
+  maxEnemies: 5
+  totalEnemiesToSpawn: 15
   spawnInterval: 2
   spawnIntervalRandomness: 0.5
   center: {fileID: 2512387468973847774}
