@@ -83,6 +83,7 @@ public class MenuManager : MonoBehaviour
     void ShowMainMenu()
     {
         GameStarted = false;
+        GameEnded = false;
         Time.timeScale = 0f;
         mainMenuPanel.SetActive(true);
         pausePanel.SetActive(false);
@@ -121,6 +122,7 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         GameStarted = true;
+        GameEnded = false;
         IsPaused = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
