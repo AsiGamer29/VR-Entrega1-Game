@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour
     static readonly List<Enemy> allEnemies = new List<Enemy>();
 
     Vector3 basePos;
+    Vector3 offsetFromCamera;
     float timeOffset;
     bool isDead = false;
     float deadTimer = 0.8f;
@@ -110,12 +111,14 @@ public class Enemy : MonoBehaviour
                 if (cam != null) target = cam.transform;
             }
         }
+
+        if (target != null)
+            offsetFromCamera = transform.position - target.position;
     }
 
     void OnEnable()
     {
         allEnemies.Add(this);
-        basePos = transform.position;
         timeOffset = Random.Range(0f, 10f);
         HasReachedPlayer = false;
     }
@@ -125,18 +128,19 @@ public class Enemy : MonoBehaviour
         allEnemies.Remove(this);
     }
 
-    // LateUpdate: se ejecuta despues del Animator, asi que nuestra posicion siempre gana
+
     void LateUpdate()
     {
         if (target == null) return;
-        if (isDead) return; // muerto: no se mueve mientras dura la animacion
+        if (isDead) return;
 
-        Vector3 toTarget = target.position - basePos;
+        // Para el enemigo, la camara siempre esta en (0,0,0): hacia ella es -offset
+        Vector3 toTarget = -offsetFromCamera;
         float dist = toTarget.magnitude;
 
         if (dist > stopDistance)
         {
-            basePos += toTarget.normalized * approachSpeed * Time.deltaTime;
+            offsetFromCamera += toTarget.normalized * approachSpeed * Time.deltaTime;
         }
         else if (!HasReachedPlayer)
         {
@@ -145,46 +149,49 @@ public class Enemy : MonoBehaviour
             OnReachedPlayer?.Invoke(this);
         }
 
+        // separation between enemies
         for (int i = 0; i < allEnemies.Count; i++)
         {
             Enemy other = allEnemies[i];
             if (other == this) continue;
 
-            Vector3 away = basePos - other.basePos;
+            Vector3 away = offsetFromCamera - other.offsetFromCamera;
             float d = away.magnitude;
             if (d < separationRadius)
             {
                 if (d < 0.001f) away = Random.onUnitSphere;
-                basePos += away.normalized * (separationRadius - d) * separationStrength * Time.deltaTime;
+                offsetFromCamera += away.normalized * (separationRadius - d) * separationStrength * Time.deltaTime;
             }
         }
 
-        Vector3 forward = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : transform.forward;
+        // movement by type
+        Vector3 forward = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : Vector3.forward;
         Vector3 right = Vector3.Cross(Vector3.up, forward);
         if (right.sqrMagnitude < 0.0001f) right = Vector3.right;
         right.Normalize();
         Vector3 up = Vector3.Cross(forward, right).normalized;
 
         float t = Time.time + timeOffset;
-        Vector3 offset = Vector3.zero;
+        Vector3 wobble = Vector3.zero;
 
         switch (type)
         {
             case Types.Fire:
-                offset = right * (Mathf.Cos(t * fireSpeed) * fireRadius)
+                wobble = right * (Mathf.Cos(t * fireSpeed) * fireRadius)
                        + up * (Mathf.Sin(t * fireSpeed) * fireRadius);
                 break;
 
             case Types.Water:
-                offset = Vector3.up * (Mathf.Sin(t * waterSpeed) * waterAmplitude);
+                wobble = Vector3.up * (Mathf.Sin(t * waterSpeed) * waterAmplitude);
                 break;
 
             case Types.Plant:
-                offset = right * (Mathf.Sin(t * plantSpeed) * plantAmplitude);
+                wobble = right * (Mathf.Sin(t * plantSpeed) * plantAmplitude);
                 break;
         }
 
-        transform.position = basePos + offset;
+        // camera just gives initial position
+        transform.position = target.position + offsetFromCamera + wobble;
 
         if (lookAtPlayer)
         {
