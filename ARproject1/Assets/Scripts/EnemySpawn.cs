@@ -247,4 +247,13 @@ public class EnemySpawner : MonoBehaviour
 
         return count >= minPointsToBlock ? nearest : -1f;
     }
+
+    public void ResetSpawner()
+    {
+        SpawnedCount = 0;
+        KilledCount = 0;
+        victoryFired = false;
+        activeEnemies.Clear();
+        timer = spawnInterval;
+    }
 }

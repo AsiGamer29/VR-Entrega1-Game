@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
 
     // Lo escucha el spawner para contar muertes (victoria)
     public static event System.Action<Enemy> OnKilled;
+    public static event System.Action<Enemy> OnReachedPlayer;
 
     static readonly List<Enemy> allEnemies = new List<Enemy>();
 
@@ -141,6 +142,7 @@ public class Enemy : MonoBehaviour
         {
             HasReachedPlayer = true;
             Debug.Log("Enemy reached player");
+            OnReachedPlayer?.Invoke(this);
         }
 
         for (int i = 0; i < allEnemies.Count; i++)

@@ -2,11 +2,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using TMPro;
+
 public class MenuManager : MonoBehaviour
 {
     public static bool IsPaused { get; private set; }
     public static bool GameStarted { get; private set; }
+    public static bool GameEnded { get; private set; }
     public static bool InputBlocked => !GameStarted || IsPaused;
+
+    [SerializeField] GameObject endPanel;   // panel Win/Lose
+    [SerializeField] TMP_Text endText;      
+    EnemySpawner spawner;
 
     static bool s_SkipMainMenu;
 
@@ -14,10 +21,40 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject hudPanel;  //score + pause button
 
+    void OnEnable()
+    {
+        Enemy.OnReachedPlayer += HandleEnemyReached;
+    }
+
+    void OnDisable()
+    {
+        Enemy.OnReachedPlayer -= HandleEnemyReached;
+        if (spawner != null) spawner.onVictory.RemoveListener(Win);
+    }
+
+    void HandleEnemyReached(Enemy e) => Lose();
+
+    public void Win() => EndGame(true);
+    public void Lose() => EndGame(false);
+
+    void EndGame(bool won)
+    {
+        if (!GameStarted || GameEnded) return;
+        GameEnded = true;
+        Time.timeScale = 0f;
+        pauseButton.SetActive(false);
+        endText.text = won ? "YOU WIN!" : "YOU LOSE";
+        endPanel.SetActive(true);
+    }
+
     void Start()
     {
         IsPaused = false;
         GameStarted = false;
+
+        GameEnded = false;
+        spawner = FindAnyObjectByType<EnemySpawner>();
+        if (spawner != null) spawner.onVictory.AddListener(Win);
 
         if (s_SkipMainMenu)
         {
@@ -50,6 +87,7 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         pausePanel.SetActive(false);
         hudPanel.SetActive(false);
+        endPanel.SetActive(false);
     }
 
     void ResetGame()
@@ -78,6 +116,8 @@ public class MenuManager : MonoBehaviour
             animator.Rebind();
             animator.Update(0f);
         }
+
+        if (spawner != null) spawner.ResetSpawner();
     }
 
     // Buttons
@@ -90,11 +130,13 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         pausePanel.SetActive(false);
         hudPanel.SetActive(true);
+        endPanel.SetActive(false);
+        pauseButton.SetActive(true);
     }
 
     public void Pause()
     {
-        if (!GameStarted) return;
+        if (!GameStarted || GameEnded) return;
         IsPaused = true;
         Time.timeScale = 0f;
         AudioListener.pause = true;
