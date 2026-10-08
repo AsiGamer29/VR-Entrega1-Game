@@ -102,11 +102,7 @@ public class MenuManager : MonoBehaviour
 
         // Restart score
         var shooter = FindAnyObjectByType<Shooter>();
-        if (shooter != null)
-        {
-            shooter.score = 0;
-            shooter.scoreText.text = "Score = 0";
-        }
+        if (shooter != null) shooter.ResetScore();
 
         // Reset Animator
         Animator animator = tutorialText.GetComponent<Animator>();
@@ -118,6 +114,7 @@ public class MenuManager : MonoBehaviour
         }
 
         if (spawner != null) spawner.ResetSpawner();
+
     }
 
     // Buttons

@@ -217,22 +217,26 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Enemy Destroyed");
 
-            player.score += scoreGiven;
-            player.scoreText.text = $"Score = {player.score}";
+            int points = player.RegisterKill(scoreGiven);   
 
             if (scoreTextPrefab != null && hudParent != null)
             {
                 GameObject textGO = Instantiate(scoreTextPrefab, hudParent, false);
-                TMP_Text scoreText = textGO.GetComponent<TMP_Text>();
-                scoreText.color = scoreColor;
+                TMP_Text scoreText = textGO.GetComponentInChildren<TMP_Text>();
+                if (scoreText != null)
+                {
+                    scoreText.text = $"+{points}";  
+                    scoreText.color = scoreColor;
+                }
             }
 
-            OnKilled?.Invoke(this);   //+1 al morir pa contar los que llevas
+            OnKilled?.Invoke(this);
             StartCoroutine(Die());
         }
         else if (collision.gameObject.tag == "BulletWater" || collision.gameObject.tag == "BulletPlant"
             || collision.gameObject.tag == "BulletFire" || collision.gameObject.tag == "Bullet")
         {
+            player.ResetCombo(); 
             if (audioSource != null && mistakeSFX != null) audioSource.PlayOneShot(mistakeSFX);
         }
     }
