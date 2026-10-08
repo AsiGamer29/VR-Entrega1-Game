@@ -50,7 +50,14 @@ This game uses occlusion to shoot projectiles with physics. These projectiles ha
 This game uses plane tracking to spawn enemies to avoid spawning enemies in wrong places or have weird perspectives. This works by detecting the space that the camera shows in real time. It doesn't work perfectly, but the enemies spawn in places where the player would expect them to do.
 ## Images
 
-![Fire Type Image](ReadmeImages/Image_Fire.png)
-![Water Type Image](ReadmeImages/Image_Water.png)
-![Plant Type Image](ReadmeImages/Image_Plant.png)
+### Fire type image:
 
+![Fire Type Image](ReadmeImages/Image_Fire.png)
+
+### Water type image:
+
+![Water Type Image](ReadmeImages/Image_Water.png)
+
+### Plant type image:
+
+![Plant Type Image](ReadmeImages/Image_Plant.png)
